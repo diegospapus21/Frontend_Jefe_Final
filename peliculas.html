@@ -7,33 +7,52 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-
-    <div class="conatiner" style="margin-top: 30px; margin-left: 55px;" >
-        <div>
-          Lista de Peliculas
-          <button type="button" class="btn btn-success" style="margin-left: 50rr0px;">Agregar</button>
-          <table class="table" class="table table-bordered">
-            <thead>
-              <tr>
+    <h1>Peliculas</h1>
+    <form id="PeliculaForm">
+        <input  name="Titulo" placeholder="Titulo" required>
+        <input  name="Director" placeholder="Director">
+        <input  name="Genero" placeholder="Genero de la Pelicula">
+        <input  name="Año" type="number" placeholder="Año de estreno">
+        <input  name="Duracion" type="number" placeholder="Duracion">
+        <input  name="Creacion" placeholder="Fecha de Creacion">
+        <button type="submit">Crear</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
                 <th>Titulo</th>
                 <th>Director</th>
                 <th>Genero</th>
                 <th>Año</th>
                 <th>Duracion</th>
-                <th>Fecha</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                
-              </tr>
-            </tbody>
-          </table>
-        </div>
-    </div>
+                <th>Creacion</th>
+            </tr>
+        </thead>
+        <tbody id="PeliculaBody"></tbody>
+    </table>
+
+    <script type="module" src="js/peliculasController.js">
+        const tbody = document.getElementById('PeliculaBody');
+        const form = document.getElementById('PeliculaForm');
+
+        await loadPeliculas(tbody);
+        bindPeliculaForm(form, tbody);
+        bindTableActions(tbody, async (id) =>{
+            const newName = prompt('Nueva Pelicula:');
+            if(!newName) return;
+            const Director = prompt('Nuevo Director:');
+            const Duracion = prompt('Actualizar Duracion');
+            const Genero = prompt('Nuevo Genero');
+
+            await fetch('http:/localhost:8080/API_Jefe_Final/Peliculas' + id, {
+                method: 'PUT', 
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({nombre: newName, Des})
+            })
+        });
+    </script>
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="js/peliculsController.js"></script>
 </body>
 </html>
