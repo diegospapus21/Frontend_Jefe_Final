@@ -1,7 +1,7 @@
-import { getPelicula, createPelicula, updatePelicula, deletePelicula } from "./peliculasService";
+import { getAllPeliculas, CrearPeliculas, ModificarPeliculas, EliminarPeliculas } from "./peliculasService";
 
 export async function loadPeliculas(tbody) {
-    const pelicula = await getPelicula();
+    const pelicula = await getAllPeliculas();
     tbody.innerHTML= "";
     pelicula.forEach(P => {
         const tr = document.createElement('tr');

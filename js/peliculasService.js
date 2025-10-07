@@ -1,11 +1,11 @@
 const API_Jefe_Final = 'http:localhost:8080/10.10.1.47'
 
-export async function getPelicula(id) {
+export async function getAllPeliculas(id) {
     const res = await fetch(`${API_Jefe_Final}/peliculas`);
     return res.json();
 }
 
-export async function createPelicula(pelicula) {
+export async function CrearPeliculas(pelicula) {
     const res = await fetch(`${API_Jefe_Final}/peliculas`,{
         method:'POST', 
         headers: {'Content-Type': 'application/json'},
@@ -14,7 +14,7 @@ export async function createPelicula(pelicula) {
     return res.json();
 }
 
-export async function updatePelicula(id, pelicula) {
+export async function ModificarPeliculas(id, pelicula) {
     const res = await fetch(`${API_Jefe_Final}/peliculas/${id}`,{
         method:'PUT', 
         headers: {'Content-Type': 'application/json'},
@@ -23,7 +23,7 @@ export async function updatePelicula(id, pelicula) {
     return res.json();
 }
 
-export async function deletePelicula(id) {
+export async function EliminarPeliculas(id) {
     return fetch (`${API_Jefe_Final}/peliculas/${id}`,{
         method:'DELETE'
     }); 

@@ -31,7 +31,8 @@
         <tbody id="PeliculaBody"></tbody>
     </table>
 
-    <script type="module" src="js/peliculasController.js">
+    <script type="module">
+        import {loadPeliculas, bindPeliculaForm,bindTableActions} from "js/PeliculasController.js"
         const tbody = document.getElementById('PeliculaBody');
         const form = document.getElementById('PeliculaForm');
 
