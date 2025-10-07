@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Peliculas</h1>
-    <form id="PeliculaForm">
+    <h1 style="margin-left: 30px; margin-top: 30px;">Lista De Peliculas</h1>
+    <form id="PeliculaForm" style="margin-left: 30px; margin-top: 30px;">
         <input  name="Titulo" placeholder="Titulo" required>
         <input  name="Director" placeholder="Director">
         <input  name="Genero" placeholder="Genero de la Pelicula">
@@ -17,7 +17,7 @@
         <input  name="Creacion" placeholder="Fecha de Creacion">
         <button type="submit">Crear</button>
     </form>
-    <table>
+    <table class="table" style="margin-left: 30px; margin-top: 30px;">
         <thead>
             <tr>
                 <th>Titulo</th>
@@ -47,9 +47,11 @@
             await fetch('http:/localhost:8080/API_Jefe_Final/Peliculas' + id, {
                 method: 'PUT', 
                 headers:{'Content-Type':'application/json'},
-                body:JSON.stringify({nombre: newName, Des})
+                body:JSON.stringify({nombre: newName, Director,Duracion: der ? Number(der):null, Genero})
             })
         });
+        await loadPeliculas(tbody);
+        await loadCursos (tbody);
     </script>
     
 
